@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Page</title>
+    <title>Secure Payment</title>
 
 <style>
         * {
@@ -229,6 +229,8 @@
             100% { transform: rotate(360deg); }
         }
 
+
+
     </style>
 </head>
 <body>
@@ -330,11 +332,17 @@ window.onload = function() {
 
 
 function copyWallet() {
-            const walletField = document.getElementById('wallet');
-            navigator.clipboard.writeText(walletField.value).then(() => {
-                alert("Wallet address copied to clipboard!");
-            });
-        }
+    const copyText = document.getElementById("wallet");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+
+    const msg = document.getElementById("copiedMessage");
+    msg.classList.add("show");
+    setTimeout(() => {
+        msg.classList.remove("show");
+    }, 2000);
+}
 
 
         
